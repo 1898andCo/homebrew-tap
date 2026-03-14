@@ -2,7 +2,7 @@ class Tally < Formula
   desc "Git-backed findings tracker for AI coding agents"
   homepage "https://github.com/1898andCo/tally"
   url "https://github.com/1898andCo/tally/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "PLACEHOLDER"
+  sha256 "1f24d21d55c83baf74fe79ce49eaec0d7fe5a8ea538ec90c597896dcc9957184"
   license "Apache-2.0"
   head "https://github.com/1898andCo/tally.git", branch: "develop"
 
