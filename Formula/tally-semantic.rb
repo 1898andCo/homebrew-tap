@@ -1,20 +1,28 @@
 class TallySemantic < Formula
   desc "Git-backed findings tracker with semantic search (fastembed)"
   homepage "https://github.com/1898andCo/tally"
-  url "https://github.com/1898andCo/tally/archive/refs/tags/v0.7.1.tar.gz"
-  sha256 "087a09d480f0b1420cfcf30debaf566a44336bfd81b6ebff015920942af974df"
+  version "0.7.2"
   license "Apache-2.0"
-  head "https://github.com/1898andCo/tally.git", branch: "develop"
+
+  conflicts_with "tally", because: "both install a 'tally' binary"
+
+  on_macos do
+    url "https://github.com/1898andCo/tally/releases/download/v0.7.2/tally-semantic-v0.7.2-aarch64-apple-darwin.tar.gz"
+    sha256 "c7ffc3c4424deedde5cc35738bc726e0fff3354f86838ff2be720a22a298de87"
+  end
+
+  on_linux do
+    url "https://github.com/1898andCo/tally/releases/download/v0.7.2/tally-semantic-v0.7.2-x86_64-unknown-linux-gnu.tar.gz"
+    sha256 "9753f8d2ce571e1428518e4166b50ef55087226e06fe9a8743ea343fad440c91"
+  end
 
   livecheck do
-    url :stable
+    url "https://github.com/1898andCo/tally/releases/latest"
     regex(/^v?(\d+(?:\.\d+)+)$/i)
   end
 
-  depends_on "rust" => :build
-
   def install
-    system "cargo", "install", *std_cargo_args, "--features", "semantic-search"
+    bin.install "tally"
   end
 
   test do
